@@ -8,16 +8,16 @@ filenameHE db 'imageHE.txt', 0h
 lineFeed   db  0Ah 
 
 SECTION .bss
-imageBuffer    resb 700000
-imageBufferHE  resb 700000
+imageBuffer    resb 200000
+imageBufferHE  resb 200000
 tempBuffer1    resb 1
-tempBuffer3    resb 3
-frequencyDist  resb 256
-frequencyCum   resb 256
-frequencyCumU  resb 256
-frequencyCuFeq resb 256
-pixelMap       resb 256  
+tempBuffer3    resb 3  
 tempBufferDW   RESD 1
+frequencyDist  RESD 256
+frequencyCum   RESD 256
+frequencyCumU  RESD 256
+frequencyCuFeq RESD 256
+pixelMap       RESD 256
 
 SECTION .text
 global  _start

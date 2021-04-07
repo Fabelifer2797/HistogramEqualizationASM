@@ -5,7 +5,7 @@ i = 0;
 j = 0;
 A= np.zeros((390,390));
 fig, (ax1,ax2) = plt.subplots(1, 2)
-file = open('./image.txt','r')
+file = open('./imageHE.txt','r')
 for line in file:
     j+=1;
     if(j > 389):

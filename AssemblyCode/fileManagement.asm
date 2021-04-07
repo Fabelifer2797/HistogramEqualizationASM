@@ -110,7 +110,7 @@ writeFile:
 
     cmp     ebp, dword[tempBufferDW]            ;Compare the counter with the total amount of bytes
     je      .finished                           ;If equals jump to the lable finished
-    mov     al, byte[imageBufferHE + ebp]         ;Move the current byte of the imageBuffer to the eax register
+    mov     al, byte[imageBufferHE + ebp]       ;Move the current byte of the imageBuffer to the eax register
     call    itoaByte                            ;Call the integer to ascii subroutine
     call    writeLineFeed                       ;Call the write line feed in the txt file subroutine
     inc     edi                                 ;Increment the seek cursor
