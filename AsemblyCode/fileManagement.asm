@@ -41,7 +41,7 @@ readFile:
 .finished:
   
     mov      dword[tempBufferDW], esi           ;Store how many bytes were saved in the imageBuffer
-    call     printImageBuffer                   ;Print in console the imageBuffer data    
+    ;call     printImageBuffer                  ;Print in console the imageBuffer data    
     popa                                        ;Restore all the registers
     ret                                         ;Return to the point where the function was called
 
@@ -110,7 +110,7 @@ writeFile:
 
     cmp     ebp, dword[tempBufferDW]            ;Compare the counter with the total amount of bytes
     je      .finished                           ;If equals jump to the lable finished
-    mov     al, byte[imageBuffer + ebp]         ;Move the current byte of the imageBuffer to the eax register
+    mov     al, byte[imageBufferHE + ebp]         ;Move the current byte of the imageBuffer to the eax register
     call    itoaByte                            ;Call the integer to ascii subroutine
     call    writeLineFeed                       ;Call the write line feed in the txt file subroutine
     inc     edi                                 ;Increment the seek cursor
