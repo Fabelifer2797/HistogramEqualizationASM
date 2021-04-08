@@ -1,34 +1,47 @@
+import time
+
 import matplotlib.pyplot as plt
 from PIL import Image
 
 
 
-def getBytesFromFile():
+def getBytesFromFile(imagePath):
 
-    image = Image.open("./testimage.jpg")
-    imageL = image.convert('L')
-    imageL.save("./testimageL.jpg")
-    mat = plt.imread("./testimageL.jpg")
+    image = Image.open(imagePath)
+    imageSize = image.size
+    imageWidth = imageSize[0]
+    imageHeight = imageSize[1]
+
+
+    if imageWidth > imageHeight:
+        imageFinalSize = imageWidth
+
+    else:
+        imageFinalSize = imageHeight
+
+    image = image.resize((imageFinalSize,imageFinalSize))
+    image = image.convert('L')
+    image.save(imagePath)
+    time.sleep(2)
+    mat = plt.imread(imagePath)
     m = mat.shape
 
-    b = []
+    byteArray = []
     for columna in mat:
         for fila in columna:
-            b.append(fila)
+            byteArray.append(fila)
 
 
 
     with open("./image.txt", "w") as archivo:
         contador = 0
-        for item in b:
+        for item in byteArray:
             item = str(item)
-            if (contador == 152099):
-                archivo.write(item)
-                contador += 1
+            if (contador == (imageFinalSize * imageFinalSize) - 1):
+                archivo.write("%s\n" % item)
+                archivo.write('F')
             else:
                 archivo.write("%s\n" % item)
                 contador += 1
 
-
-
-getBytesFromFile()
+    return imageFinalSize

@@ -3,13 +3,13 @@
 %include 'algorithm.asm'
 
 SECTION .data
-filename   db 'image.txt', 0h
+filename   db '../ImageConversion/image.txt', 0h
 filenameHE db 'imageHE.txt', 0h
 lineFeed   db  0Ah 
 
 SECTION .bss
-imageBuffer    resb 200000
-imageBufferHE  resb 200000
+imageBuffer    resb 2000000
+imageBufferHE  resb 2000000
 tempBuffer1    resb 1
 tempBuffer3    resb 3  
 tempBufferDW   RESD 1
