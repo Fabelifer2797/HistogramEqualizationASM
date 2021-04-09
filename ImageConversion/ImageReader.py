@@ -1,13 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def imageReader(imagePath, imageSize):
 
     byte =0;
     i = 0;
     j = 0;
     A= np.zeros((imageSize,imageSize));
-    fig, (ax1,ax2) = plt.subplots(1, 2)
     file = open('../AssemblyCode/imageHE.txt','r')
     for line in file:
         j+=1;
@@ -21,9 +21,30 @@ def imageReader(imagePath, imageSize):
             else:
                 A[i,j] = byte;
                 byte = 0;
+
+    fig = plt.figure()
+    fig.subplots_adjust(hspace=0.2)
     B = plt.imread(imagePath)
-    ax1.imshow(B,cmap='gray');
-    ax1.set_title("Imagen Original")
-    ax2.imshow (A,cmap='gray');
-    ax2.set_title("Imagen Ecualizada")
-    plt.show();
+
+    fig.add_subplot(221)
+    plt.title("Original Image")
+    plt.set_cmap('gray')
+    plt.axis('off')
+    plt.imshow(B)
+
+    fig.add_subplot(222)
+    plt.title("Histogram")
+    plt.hist(B, 10)
+
+    fig.add_subplot(223)
+    plt.title("Histogram equalization")
+    plt.set_cmap('gray')
+    plt.axis('off')
+    plt.imshow(A)
+
+    fig.add_subplot(224)
+    plt.title("Histogram")
+    plt.hist(A, 10)
+
+    plt.show()
+

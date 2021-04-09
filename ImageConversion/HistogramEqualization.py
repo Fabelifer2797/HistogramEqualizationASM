@@ -14,7 +14,7 @@ def histogramEqualization(imagePath):
     open("../AssemblyCode/imageHE.txt", 'w')
     subprocess.Popen(["make"], stdout=subprocess.PIPE, cwd="../AssemblyCode")
     print("Image processing Please wait...")
-    time.sleep(35)
+    time.sleep(15)
     print("Image processed...")
     print("Opening image...")
     deleteLastLine("../AssemblyCode/imageHE.txt")

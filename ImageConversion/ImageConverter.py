@@ -1,4 +1,4 @@
-import time
+
 
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -22,9 +22,7 @@ def getBytesFromFile(imagePath):
     image = image.resize((imageFinalSize,imageFinalSize))
     image = image.convert('L')
     image.save(imagePath)
-    time.sleep(2)
     mat = plt.imread(imagePath)
-    m = mat.shape
 
     byteArray = []
     for columna in mat:
